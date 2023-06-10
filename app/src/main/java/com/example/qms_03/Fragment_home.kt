@@ -1,6 +1,5 @@
-package com.example.qms_03;
+package com.example.qms_03
 
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.Fragment
 
-public class Fragment_home extends Fragment {
-}
+class Fragment_home : Fragment()
