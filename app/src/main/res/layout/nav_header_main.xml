@@ -33,3 +33,4 @@
         android:layout_height="wrap_content"
         android:text="studentNumber@vossie.net" />
 </LinearLayout>
+
