@@ -1,6 +1,8 @@
 package com.example.qms_03
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +18,15 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MenuFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MenuFragment : Fragment() {
+class MenuFragment() : Fragment(), Parcelable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    constructor(parcel: Parcel) : this() {
+        param1 = parcel.readString()
+        param2 = parcel.readString()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,5 +62,24 @@ class MenuFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(param1)
+        parcel.writeString(param2)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MenuFragment> {
+        override fun createFromParcel(parcel: Parcel): MenuFragment {
+            return MenuFragment(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MenuFragment?> {
+            return arrayOfNulls(size)
+        }
     }
 }
