@@ -5,5 +5,5 @@
     <item name="action_menuFragment_to_queryStatusFragment" type="id"/>
     <item name="action_menuFragment_to_queryHistoryFragment" type="id"/>
     <item name="action_menuFragment_to_rateQmsFragment" type="id"/>
-    <dimen name="some_dimension_name">24sp</dimen>
+    <dimen name="nav_host_fragment_content_main">24sp</dimen>
 </resources>
