@@ -32,27 +32,29 @@
         android:id="@+id/vossie_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:hint="Vossie Email"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/login_subheading"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/login_subheading" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/vossie_email"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/vossie_email" />
 
     <Button
         android:id="@+id/login_button"
@@ -79,11 +81,11 @@
         android:id="@+id/signup_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up here"
-        android:textSize="14sp"
-        android:textColor="@color/colorPrimary"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
-        app:layout_constraintStart_toEndOf="@id/signup_text"/>
+        android:text="Sign up here"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/signup_text"
+        app:layout_constraintTop_toBottomOf="@id/login_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

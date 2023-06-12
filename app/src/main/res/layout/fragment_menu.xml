@@ -1,47 +1,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/home_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_layout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 
-<TextView
-    android:id="@+id/welcome_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Welcome to Query Management System!"
-    android:textSize="22sp"
-    android:textStyle="bold"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="32dp"
-    android:layout_marginBottom="16dp"/>
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/welcome_to_query_management_system"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-<Button
-    android:id="@+id/log_query_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Log Query"
-    android:layout_margin="16dp"/>
+    <Button
+        android:id="@+id/log_query_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/log_query" />
 
-<Button
-    android:id="@+id/query_status_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Query Status"
-    android:layout_margin="16dp"/>
+    <Button
+        android:id="@+id/query_status_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/query_status"
+        tools:ignore="VisualLintButtonSize" />
 
-<Button
-    android:id="@+id/query_history_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Query History"
-    android:layout_margin="16dp"/>
+    <Button
+        android:id="@+id/query_history_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/query_history" />
 
-<Button
-    android:id="@+id/rate_qms_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Rate QMS"
-    android:layout_margin="16dp"/>
+    <Button
+        android:id="@+id/rate_qms_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/rate_qms" />
 
 </LinearLayout>
 
