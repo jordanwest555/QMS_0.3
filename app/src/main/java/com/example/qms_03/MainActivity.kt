@@ -1,6 +1,7 @@
 package com.example.qms_03
 
 import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 
 
 import android.os.Bundle
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-        binding.drawerLayout
+
         val navView: NavigationView = binding.navView
 
         // Set up the NavController with the NavHostFragment
@@ -46,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the ActionBar with the NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Connect NavigationView with NavController
+        navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,7 +59,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp()
+        // Navigate up with NavController
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }
+
