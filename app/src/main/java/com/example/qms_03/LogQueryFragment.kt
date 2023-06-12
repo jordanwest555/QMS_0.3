@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -38,19 +40,13 @@ class LogQueryFragment : Fragment() {
         etDepartment = view.findViewById(R.id.et_department)
         etDate = view.findViewById(R.id.et_date)
 
-        // Add any additional logic or listeners here
+        // Add a click listener for the button
+        val buttonNavigateToMenu = view.findViewById<Button>(R.id.button_navigate_to_menu)
+        buttonNavigateToMenu.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.action_logQueryFragment_to_menuFragment)
+        }
 
         return view
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LogQueryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

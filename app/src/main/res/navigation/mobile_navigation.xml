@@ -49,4 +49,16 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <fragment
+        android:id="@+id/logQueryFragment"
+        android:name="com.example.qms_03.fragment_log_query"
+        android:label="Log Query"
+        tools:layout="@layout/fragment_log_query">
+        <action
+            android:id="@+id/action_logQueryFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+
+    </fragment>
+
+
 </navigation>
