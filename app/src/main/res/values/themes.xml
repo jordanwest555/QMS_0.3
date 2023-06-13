@@ -22,6 +22,15 @@
     <style name="Theme.QMS_03.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.QMS_03.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" /> 
+    <!-- DO COMMENTS LIKE THIS , this is a block comment-->
+
+
+
+    
 
 </resources>
