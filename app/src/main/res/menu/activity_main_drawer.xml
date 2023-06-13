@@ -8,6 +8,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/baseline_house_24"
             android:title="@string/menu_home" />
-<action
+
     </group>
 </menu>
