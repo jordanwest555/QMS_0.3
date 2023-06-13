@@ -2,10 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_home">
 
-    <include app:graph="@navigation/mobile_navigation" />
     <fragment
         android:id="@+id/fragment_home"
         android:name="com.example.qms_03.Fragment_home"
@@ -28,9 +27,12 @@
         android:name="com.example.qms_03.LogQueryFragment"
         android:label="fragment_log_query"
         tools:layout="@layout/fragment_log_query" />
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.qms_03.MainActivity"
-        android:label="app_bar_main"
-        tools:layout="@layout/app_bar_main" />
+    <fragment
+        android:id="@+id/menuFragment2"
+        android:name="com.example.qms_03.MenuFragment"
+        android:label="MenuFragment" />
+    <fragment
+        android:id="@+id/fragment_log_query"
+        android:name="com.example.qms_03.fragment_log_query"
+        android:label="fragment_log_query" />
 </navigation>
