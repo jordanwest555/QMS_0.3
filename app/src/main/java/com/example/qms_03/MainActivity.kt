@@ -2,10 +2,11 @@ package com.example.qms_03
 
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+
+
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -27,32 +28,40 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.appBarMain.toolbar)
 
-        // Commented out as FloatingActionButton is not defined in your layout
-        //binding.fab.setOnClickListener { view ->
-        //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        //        .setAction("Action", null).show()
-        //}
+        binding.appBarMain.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
 
         val navView: NavigationView = binding.navView
+
+        // Set up the NavController with the NavHostFragment
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
+        // Set up the AppBarConfiguration with the NavController
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph)
-            .setOpenableLayout(binding.drawerLayout)
+            .setDrawerLayout(binding.drawerLayout)
             .build()
 
+        // Set up the ActionBar with the NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Connect NavigationView with NavController
         navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        // Navigate up with NavController
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }
+
