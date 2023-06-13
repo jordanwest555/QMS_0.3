@@ -13,6 +13,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:logo="@drawable/eduvoslogoslogan"/>
+         />
 
 </com.google.android.material.appbar.AppBarLayout>
