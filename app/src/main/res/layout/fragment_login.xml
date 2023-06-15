@@ -16,6 +16,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/login_subheading"
         android:layout_width="wrap_content"
@@ -26,6 +27,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@id/login_heading"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <EditText
         android:id="@+id/vossie_email"
         android:layout_width="0dp"
@@ -39,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_subheading" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -52,6 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vossie_email" />
+
     <Button
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
@@ -62,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/signup_text"
         android:layout_width="wrap_content"
@@ -71,6 +76,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/login_button"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/signup_link"
         android:layout_width="wrap_content"

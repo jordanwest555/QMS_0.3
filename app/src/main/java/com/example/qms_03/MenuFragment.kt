@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 /**
  * A simple [Fragment] subclass.
  * Use the [MenuFragment.newInstance] factory method to
@@ -19,10 +22,12 @@ class MenuFragment() : Fragment(), Parcelable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
     constructor(parcel: Parcel) : this() {
         param1 = parcel.readString()
         param2 = parcel.readString()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -30,6 +35,7 @@ class MenuFragment() : Fragment(), Parcelable {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,13 +43,16 @@ class MenuFragment() : Fragment(), Parcelable {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(param1)
         parcel.writeString(param2)
     }
+
     override fun describeContents(): Int {
         return 0
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -62,11 +71,13 @@ class MenuFragment() : Fragment(), Parcelable {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
         @JvmField
         val CREATOR = object : Parcelable.Creator<MenuFragment> {
             override fun createFromParcel(parcel: Parcel): MenuFragment {
                 return MenuFragment(parcel)
             }
+
             override fun newArray(size: Int): Array<MenuFragment?> {
                 return arrayOfNulls(size)
             }
