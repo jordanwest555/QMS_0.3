@@ -22,4 +22,10 @@
     <string name="query_description_hint">Query description...</string>
     <string name="department_hint">Department...</string>
     <string name="date_hint">Date [dd/mm/yyyy]...</string>
+
+    <string name="login_button_text">Login</string>
+    <string name="Signup_button_text">Signup</string>
+    <string name="text_above_buttons">Eduvos Student/Staff Sign up or Login</string>
+    <string name="text_below_buttons">Follow us:</string>
+
 </resources>

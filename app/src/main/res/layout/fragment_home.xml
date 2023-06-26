@@ -4,27 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="#C3CECE" >
+    <!--    Background colour of fragment added-->
+
+
+
+
+    <TextView
+        android:id="@+id/login_heading"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="160dp"
+        android:text="@string/text_above_buttons"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--   The string for the text can be found in the strings.xml file.
+            Here it's referenced using the name: text_above_buttons-->
+
+
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:background="@color/eduvosBlue"
+        android:text="@string/login_button_text"
         app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
+    <!--   The string for the button can be found in the strings.xml file.
+            Here it's referenced using the name: login_button_text-->
+
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/Signup_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <!--   The string for the button can be found in the strings.xml file.
+                Here it's referenced using the name: signup_button_text-->
+
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:src="@drawable/eduvos_logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <TextView
+        android:id="@+id/footer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="476dp"
+        android:text="@string/text_below_buttons"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/facebookIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="508dp"
+        android:src="@drawable/facebook_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#C3CECE"/>
+
+    <ImageButton
+        android:id="@+id/twitter"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="508dp"
+        android:src="@drawable/twitter_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#C3CECE"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
