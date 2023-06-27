@@ -2,28 +2,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.qms_03.Fragment_home"
+        android:id="@+id/HomeFragment"
+        android:name="com.example.qms_03.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/HomeFragment">
         <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
+            android:id="@+id/action_HomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_signUpFragment"
+            android:id="@+id/action_HomeFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_menuFragment"
+            android:id="@+id/action_HomeFragment_to_menuFragment"
             app:destination="@id/menuFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_mainActivity2"
+            android:id="@+id/action_HomeFragment_to_mainActivity2"
             app:destination="@id/mainActivity2" />
 
     </fragment>
@@ -54,9 +54,9 @@
         android:label="Menu"
         tools:layout="@layout/fragment_menu">
         <action
-            android:id="@+id/action_menuFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
+            android:id="@+id/action_menuFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment"
+            app:popUpTo="@id/HomeFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -76,11 +76,11 @@
         android:label="app_bar_main"
         tools:layout="@layout/app_bar_main" />
     <action
-        android:id="@+id/action_homeFragment_to_mainActivity2"
+        android:id="@+id/action_HomeFragment_to_mainActivity2"
         app:destination="@id/mainActivity2" />
     <action
-        android:id="@+id/action_mainActivity2_to_homeFragment"
-        app:destination="@id/homeFragment" />
+        android:id="@+id/action_mainActivity2_to_HomeFragment"
+        app:destination="@id/HomeFragment" />
 
 
 

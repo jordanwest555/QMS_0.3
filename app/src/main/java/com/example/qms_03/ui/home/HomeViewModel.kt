@@ -4,10 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _buttonText = MutableLiveData<String>()
+    val buttonText: LiveData<String> = _buttonText
+
+    fun setButtonText(text: String) {
+        _buttonText.value = text
     }
-    val text: LiveData<String> = _text
 }
+
