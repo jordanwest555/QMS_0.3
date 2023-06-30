@@ -1,0 +1,165 @@
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+
+class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    companion object {
+        private const val DATABASE_NAME = "mydatabase.db"
+        private const val DATABASE_VERSION = 1
+
+        // Define the table and column names
+        private const val TABLE_NAME = "User"
+        private const val COLUMN_USER_ID = "userID"
+        private const val COLUMN_EMAIL = "email"
+        private const val COLUMN_STUDENT_ID = "studentID"
+        private const val COLUMN_FIRST_NAME = "firstName"
+        private const val COLUMN_LAST_NAME = "lastName"
+    }
+
+    override fun onCreate(db: SQLiteDatabase) {
+        val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_USER_ID INTEGER PRIMARY KEY, $COLUMN_EMAIL TEXT, " +
+                "$COLUMN_STUDENT_ID TEXT, $COLUMN_FIRST_NAME TEXT, $COLUMN_LAST_NAME TEXT)"
+        db.execSQL(createTableQuery)
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // Handle database upgrades if needed
+    }
+
+    // method to insert data into the User table
+    fun insertUser(user: User) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_USER_ID, user.userID)
+            put(COLUMN_EMAIL, user.email)
+            put(COLUMN_STUDENT_ID, user.studentID)
+            put(COLUMN_FIRST_NAME, user.firstName)
+            put(COLUMN_LAST_NAME, user.lastName)
+        }
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+    }
+
+    // method to retrieve all users from the User table
+    fun getAllUsers(): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+
+    // methods to retrieve users based on specific criteria
+    fun getUserByID(userID: Int): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_USER_ID = $userID"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+
+    fun getUserByEmail(email: String): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_EMAIL = '$email'"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+
+    fun getUserByStudentID(studentID: String): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_STUDENT_ID = '$studentID'"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+
+    fun getUserByFirstName(firstName: String): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_FIRST_NAME = '$firstName'"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+
+    fun getUserByLastName(lastName: String): List<User> {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_LAST_NAME = '$lastName'"
+        val cursor = db.rawQuery(query, null)
+        val userList = mutableListOf<User>()
+        while (cursor.moveToNext()) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME))
+            )
+            userList.add(user)
+        }
+        cursor.close()
+        db.close()
+        return userList
+    }
+}
