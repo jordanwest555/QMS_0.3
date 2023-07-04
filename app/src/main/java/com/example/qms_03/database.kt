@@ -1,3 +1,5 @@
+package com.example.qms_03
+
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -14,7 +16,7 @@ data class User(
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
-        private const val DATABASE_NAME = "mydatabase.db"
+        private const val DATABASE_NAME = "database.db"
         private const val DATABASE_VERSION = 2
 
         // Define the table and column names
@@ -72,12 +74,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.use {
             while (it.moveToNext()) {
                 val user = User(
-                    it.getInt(it.getColumnIndex(COLUMN_USER_ID)),
-                    it.getString(it.getColumnIndex(COLUMN_EMAIL)),
-                    it.getString(it.getColumnIndex(COLUMN_STUDENT_ID)),
-                    it.getString(it.getColumnIndex(COLUMN_FIRST_NAME)),
-                    it.getString(it.getColumnIndex(COLUMN_LAST_NAME)),
-                    it.getInt(it.getColumnIndex(COLUMN_IS_ADMIN)) == 1
+                    it.getInt(it.getColumnIndexOrThrow(COLUMN_USER_ID)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_STUDENT_ID)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_FIRST_NAME)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_LAST_NAME)),
+                    it.getInt(it.getColumnIndexOrThrow(COLUMN_IS_ADMIN)) == 1
                 )
                 userList.add(user)
             }
@@ -113,12 +115,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.use {
             while (it.moveToNext()) {
                 val user = User(
-                    it.getInt(it.getColumnIndex(COLUMN_USER_ID)),
-                    it.getString(it.getColumnIndex(COLUMN_EMAIL)),
-                    it.getString(it.getColumnIndex(COLUMN_STUDENT_ID)),
-                    it.getString(it.getColumnIndex(COLUMN_FIRST_NAME)),
-                    it.getString(it.getColumnIndex(COLUMN_LAST_NAME)),
-                    it.getInt(it.getColumnIndex(COLUMN_IS_ADMIN)) == 1
+                    it.getInt(it.getColumnIndexOrThrow(COLUMN_USER_ID)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_STUDENT_ID)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_FIRST_NAME)),
+                    it.getString(it.getColumnIndexOrThrow(COLUMN_LAST_NAME)),
+                    it.getInt(it.getColumnIndexOrThrow(COLUMN_IS_ADMIN)) == 1
                 )
                 userList.add(user)
             }
