@@ -37,7 +37,7 @@ class Fragment_login : Fragment() {
                 if (user != null) {
                     if (user.isAdmin) {
                         Toast.makeText(requireContext(), "Logged in as Admin", Toast.LENGTH_SHORT).show()
-                        // TODO: Navigate to Admin Menu here
+                        // to do Navigate to Admin Menu here
                     } else {
                         Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
                         // Navigate to the MenuFragment
