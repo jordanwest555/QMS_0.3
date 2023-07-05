@@ -4,14 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-
 class HomeViewModel : ViewModel() {
 
-    private val _buttonText = MutableLiveData<String>()
-    val buttonText: LiveData<String> = _buttonText
-
-    fun setButtonText(text: String) {
-        _buttonText.value = text
+    private val _signUpButtonText = MutableLiveData<String>().apply {
+        value = "Sign Up"
     }
-}
+    val signUpButtonText: LiveData<String> = _signUpButtonText
 
+    private val _loginButtonText = MutableLiveData<String>().apply {
+        value = "Login"
+    }
+    val loginButtonText: LiveData<String> = _loginButtonText
+}

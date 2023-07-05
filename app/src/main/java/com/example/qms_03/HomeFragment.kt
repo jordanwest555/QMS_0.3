@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         val signUpButton: Button = binding.signUpButton
-        homeViewModel.buttonText.observe(viewLifecycleOwner) {
+        homeViewModel.signUpButtonText.observe(viewLifecycleOwner) {
             signUpButton.text = it
         }
 
@@ -37,6 +37,17 @@ class HomeFragment : Fragment() {
             // Navigate to SignUpFragment
             val navController = findNavController()
             navController.navigate(R.id.action_homeFragment_to_signUpFragment)
+        }
+
+        val loginButton: Button = binding.loginButton
+        homeViewModel.loginButtonText.observe(viewLifecycleOwner) {
+            loginButton.text = it
+        }
+
+        loginButton.setOnClickListener {
+            // Navigate to LoginFragment
+            val navController = findNavController()
+            navController.navigate(R.id.action_homeFragment_to_loginFragment)
         }
 
         return root
