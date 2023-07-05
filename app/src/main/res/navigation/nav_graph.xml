@@ -27,6 +27,10 @@
         android:label="Fragment_login" >
 
         <action
+            android:id="@+id/action_Fragment_login_to_MenuFragment"
+            app:destination="@id/menuFragment2" />
+
+        <action
             android:id="@+id/action_Fragment_login_to_Fragment_sign_up"
             app:destination="@id/fragment_sign_up" />
     </fragment>

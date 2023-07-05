@@ -36,7 +36,8 @@ class Fragment_login : Fragment() {
                 val user = dbHelper.validateUser(email, password)
                 if (user != null) {
                     Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
-                    // to do navigate to the next screen here
+                    // Navigate to the MenuFragment
+                    findNavController().navigate(R.id.action_Fragment_login_to_MenuFragment)
                 } else {
                     Toast.makeText(requireContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show()
                 }
@@ -44,6 +45,7 @@ class Fragment_login : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in both fields", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         signupLink.setOnClickListener {
             findNavController().navigate(R.id.action_Fragment_login_to_Fragment_sign_up)
