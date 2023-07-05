@@ -39,7 +39,14 @@ class Fragment_sign_up : Fragment() {
             val confirmPassword = binding.confirmPassword.text.toString()
             val isAdmin = binding.adminCheckbox.isChecked
 
+            val passwordPattern = "^(?=.*[A-Z])(?=.*\\d).{6,}$".toRegex()
+
             if (name.isNotBlank() && email.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
+                if (!passwordPattern.matches(password)) {
+                    Toast.makeText(requireContext(), "Password must be at least 6 characters long and contain at least 1 uppercase letter and 1 number", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 val dbHelper = DatabaseHelper(requireContext())
                 if (dbHelper.emailExists(email)) {
                     Toast.makeText(requireContext(), "This email is already registered", Toast.LENGTH_SHORT).show()
@@ -54,6 +61,7 @@ class Fragment_sign_up : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in all fields or make sure your passwords match", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
         return root
