@@ -18,35 +18,35 @@ android:orientation="vertical">
 
     <Button
         android:id="@+id/log_query_button"
-        android:layout_width="wrap_content"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="@string/log_query" />
 
     <Button
         android:id="@+id/query_status_button"
-        android:layout_width="wrap_content"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="@string/query_status"
         tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/query_history_button"
-        android:layout_width="wrap_content"
+        android:layout_width="164dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="@string/query_history" />
 
     <Button
         android:id="@+id/rate_qms_button"
-        android:layout_width="wrap_content"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="@string/rate_qms" />
 
 </LinearLayout>

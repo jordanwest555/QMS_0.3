@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 data class User(
-    val userID: Int,
+    val userID: Int?,
     val email: String,
     val studentID: String,
     val firstName: String,
@@ -17,7 +17,7 @@ data class User(
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "database.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
 
         // Define the table and column names
         private const val TABLE_NAME = "User"
@@ -32,7 +32,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     override fun onCreate(db: SQLiteDatabase) {
         val createTableQuery = """
             CREATE TABLE $TABLE_NAME (
-                $COLUMN_USER_ID INTEGER PRIMARY KEY,
+                $COLUMN_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_EMAIL TEXT,
                 $COLUMN_STUDENT_ID TEXT,
                 $COLUMN_FIRST_NAME TEXT,
@@ -44,19 +44,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        if (oldVersion < 2) {
-            val alterTableQuery = """
-                ALTER TABLE $TABLE_NAME
-                ADD COLUMN $COLUMN_IS_ADMIN BOOLEAN DEFAULT 0
-            """.trimIndent()
-            db.execSQL(alterTableQuery)
+        if (oldVersion < 3) {
+            db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+            onCreate(db)
         }
     }
 
     fun insertUser(user: User) {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_USER_ID, user.userID)
             put(COLUMN_EMAIL, user.email)
             put(COLUMN_STUDENT_ID, user.studentID)
             put(COLUMN_FIRST_NAME, user.firstName)

@@ -4,12 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.qms_03.databinding.FragmentSignUpBinding
+import android.util.Log
+
 
 class Fragment_sign_up : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
+
+    private fun printAllUsers(dbHelper: DatabaseHelper) {
+        val allUsers = dbHelper.getAllUsers()
+        for (user in allUsers) {
+            Log.d("DatabaseHelper", "User: $user")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,15 +29,24 @@ class Fragment_sign_up : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Access the UI components and perform any necessary setup
-        val fullNameEditText = binding.fullName
-        val studentEmailEditText = binding.studentEmail
-        val passwordEditText = binding.password
-        val confirmPasswordEditText = binding.confirmPassword
         val signUpButton = binding.signupButton
-        val loginLinkTextView = binding.loginLink
 
-        // Set up listeners or actions for the UI components
+        signUpButton.setOnClickListener {
+            val name = binding.fullName.text.toString()
+            val email = binding.studentEmail.text.toString()
+            val password = binding.password.text.toString()
+            val confirmPassword = binding.confirmPassword.text.toString()
+            val isAdmin = binding.adminCheckbox.isChecked
+
+            if (name.isNotBlank() && email.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
+                val dbHelper = DatabaseHelper(requireContext())
+                dbHelper.insertUser(User(0, email, "", name, "", isAdmin))
+                Toast.makeText(requireContext(), "User registered successfully", Toast.LENGTH_SHORT).show()
+                //printAllUsers(dbHelper)   -- test code to verify database working, can be viewed in logcat.
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all fields or make sure your passwords match", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return root
     }
