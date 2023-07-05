@@ -40,16 +40,21 @@ class Fragment_sign_up : Fragment() {
             val isAdmin = binding.adminCheckbox.isChecked
 
             if (name.isNotBlank() && email.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
-                val hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt())
                 val dbHelper = DatabaseHelper(requireContext())
-                dbHelper.insertUser(User(null, email, hashedPassword, "", name, "", isAdmin))
-                Toast.makeText(requireContext(), "User registered successfully", Toast.LENGTH_SHORT).show()
-                printAllUsers(dbHelper)   //test code to verify database working, can be viewed in logcat.
-                findNavController().navigate(R.id.action_Fragment_sign_up_to_Fragment_login)
+                if (dbHelper.emailExists(email)) {
+                    Toast.makeText(requireContext(), "This email is already registered", Toast.LENGTH_SHORT).show()
+                } else {
+                    val hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt())
+                    dbHelper.insertUser(User(null, email, hashedPassword, "", name, "", isAdmin))
+                    Toast.makeText(requireContext(), "User registered successfully", Toast.LENGTH_SHORT).show()
+                    printAllUsers(dbHelper)   //test code to verify database working, can be viewed in logcat.
+                    findNavController().navigate(R.id.action_Fragment_sign_up_to_Fragment_login)
+                }
             } else {
                 Toast.makeText(requireContext(), "Please fill in all fields or make sure your passwords match", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         return root
     }

@@ -19,7 +19,7 @@ data class User(
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "database.db"
-        private const val DATABASE_VERSION = 4 // Updated to 4
+        private const val DATABASE_VERSION = 4
 
         // Define the table and column names
         private const val TABLE_NAME = "User"
@@ -48,7 +48,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        if (oldVersion < 4) { // Updated to 4
+        if (oldVersion < 4) {
             db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
             onCreate(db)
         }
@@ -91,6 +91,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.close()
         return null
     }
+
+    // emailExists method here
+    fun emailExists(email: String): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_EMAIL = ?", arrayOf(email))
+        val exists = cursor.moveToFirst()
+        cursor.close()
+        return exists
+    }
+
 
 
     fun getAllUsers(): List<User> {
