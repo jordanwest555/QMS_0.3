@@ -2,7 +2,6 @@ package com.example.qms_03
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -10,8 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import android.view.View
 
 class Fragment_login : Fragment() {
+    private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,6 +20,8 @@ class Fragment_login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
+
+        dbHelper = DatabaseHelper(requireContext())
 
         val emailField: EditText = root.findViewById(R.id.vossie_email)
         val passwordField: EditText = root.findViewById(R.id.password)
@@ -30,7 +33,13 @@ class Fragment_login : Fragment() {
             val password = passwordField.text.toString()
 
             if (email.isNotBlank() && password.isNotBlank()) {
-                Toast.makeText(requireContext(), "Attempting to log in...", Toast.LENGTH_SHORT).show()
+                val user = dbHelper.validateUser(email, password)
+                if (user != null) {
+                    Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
+                    // to do navigate to the next screen here
+                } else {
+                    Toast.makeText(requireContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(requireContext(), "Please fill in both fields", Toast.LENGTH_SHORT).show()
             }
@@ -39,8 +48,6 @@ class Fragment_login : Fragment() {
         signupLink.setOnClickListener {
             findNavController().navigate(R.id.action_Fragment_login_to_Fragment_sign_up)
         }
-
-
 
         return root
     }
