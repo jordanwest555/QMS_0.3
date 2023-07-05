@@ -35,9 +35,14 @@ class Fragment_login : Fragment() {
             if (email.isNotBlank() && password.isNotBlank()) {
                 val user = dbHelper.validateUser(email, password)
                 if (user != null) {
-                    Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
-                    // Navigate to the MenuFragment
-                    findNavController().navigate(R.id.action_Fragment_login_to_MenuFragment)
+                    if (user.isAdmin) {
+                        Toast.makeText(requireContext(), "Logged in as Admin", Toast.LENGTH_SHORT).show()
+                        // TODO: Navigate to Admin Menu here
+                    } else {
+                        Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
+                        // Navigate to the MenuFragment
+                        findNavController().navigate(R.id.action_Fragment_login_to_MenuFragment)
+                    }
                 } else {
                     Toast.makeText(requireContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show()
                 }
@@ -45,6 +50,7 @@ class Fragment_login : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in both fields", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
         signupLink.setOnClickListener {
