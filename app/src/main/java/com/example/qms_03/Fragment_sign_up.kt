@@ -62,10 +62,14 @@ class Fragment_sign_up : Fragment() {
             }
         }
 
-
+        val loginLink = binding.loginLink
+        loginLink.setOnClickListener {
+            findNavController().navigate(R.id.action_Fragment_sign_up_to_Fragment_login)
+        }
 
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
