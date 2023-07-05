@@ -51,9 +51,17 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_homeFragment_to_loginFragment)
         }
 
-        val facebookIcon = binding.facebookIcon  // Access views through the binding object
+        // Facebook button click listener
+        val facebookIcon = binding.facebookIcon
         facebookIcon.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/EduvosEducationSA/"))
+            startActivity(intent)
+        }
+
+        // Twitter button click listener
+        val twitterButton = binding.twitter
+        twitterButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/edu_vos"))
             startActivity(intent)
         }
 
@@ -65,4 +73,5 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
+
 
