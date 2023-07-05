@@ -12,10 +12,8 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <include
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <!-- the custom toolbar layout -->
+        <include layout="@layout/app_bar_main" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
