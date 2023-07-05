@@ -10,9 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.qms_03.databinding.HomeFragmentBinding
 import com.example.qms_03.ui.home.HomeViewModel
+import android.content.Intent
+import android.net.Uri
 
 class HomeFragment : Fragment() {
-
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -50,6 +51,12 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_homeFragment_to_loginFragment)
         }
 
+        val facebookIcon = binding.facebookIcon  // Access views through the binding object
+        facebookIcon.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/EduvosEducationSA/"))
+            startActivity(intent)
+        }
+
         return root
     }
 
@@ -58,3 +65,4 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
+
