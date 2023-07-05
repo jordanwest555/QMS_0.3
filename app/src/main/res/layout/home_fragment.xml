@@ -1,87 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#C3CECE"
-    tools:context=".HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/login_heading"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="160dp"
-        android:text="@string/text_above_buttons"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C3CECE"
+        tools:context=".HomeFragment">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:background="@color/eduvosBlue"
-        android:text="@string/login_button_text"
-        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/login_heading"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="160dp"
+            android:text="@string/text_above_buttons"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="@string/Signup_button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@color/eduvosBlue"
+            android:text="@string/login_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/signUpButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:src="@drawable/eduvos_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Signup_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
-    <TextView
-        android:id="@+id/footer"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="476dp"
-        android:text="@string/text_below_buttons"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:src="@drawable/eduvos_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/facebookIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="508dp"
-        android:src="@drawable/facebook_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#C3CECE" />
+        <TextView
+            android:id="@+id/footer"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="476dp"
+            android:text="@string/text_below_buttons"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/twitter"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="508dp"
-        android:src="@drawable/twitter_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#C3CECE" />
+        <ImageButton
+            android:id="@+id/facebookIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="508dp"
+            android:src="@drawable/facebook_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#C3CECE" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/twitter"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="508dp"
+            android:src="@drawable/twitter_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#C3CECE" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
