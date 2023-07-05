@@ -13,7 +13,13 @@
     <fragment
         android:id="@+id/fragment_sign_up"
         android:name="com.example.qms_03.Fragment_sign_up"
-        android:label="Fragment_sign_up" />
+        android:label="Fragment_sign_up" >
+
+        <!-- Added action to Fragment_login -->
+        <action
+            android:id="@+id/action_Fragment_sign_up_to_Fragment_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_login"
@@ -34,7 +40,7 @@
         <action
             android:id="@+id/action_homeFragment_to_signUpFragment"
             app:destination="@id/fragment_sign_up" />
-        
+
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/fragment_login" />
