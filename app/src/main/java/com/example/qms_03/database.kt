@@ -32,6 +32,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_FIRST_NAME = "firstName"
         private const val COLUMN_LAST_NAME = "lastName"
         private const val COLUMN_IS_ADMIN = "isAdmin"
+        //ticket system variables
+        private const val TABLE_TICKETS = "Tickets"
+        private const val COLUMN_TICKET_ID = "ticketID"
+        private const val COLUMN_QUERY_ID = "queryID"
+        private const val COLUMN_ADMIN_ID = "adminID"
+        private const val COLUMN_MESSAGE = "message"
+        private const val COLUMN_STATUS = "status"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -47,6 +54,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             )
         """.trimIndent()
         db.execSQL(createTableQuery)
+        val createTicketsTableQuery = """
+        CREATE TABLE $TABLE_TICKETS (
+            $COLUMN_TICKET_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            $COLUMN_QUERY_ID INTEGER,
+            $COLUMN_USER_ID INTEGER,
+            $COLUMN_ADMIN_ID INTEGER,
+            $COLUMN_MESSAGE TEXT,
+            $COLUMN_STATUS TEXT
+        )
+    """.trimIndent()
+        db.execSQL(createTicketsTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -71,41 +89,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
 
-    // /*the hashed passwords are correct but it still says invalid login credentials so i have to skip password hashing for now, could not find the issue*/
-/*
-fun validateUser(email: String, password: String): User? {
-    val db = readableDatabase
-    val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_EMAIL = ?", arrayOf(email))
-    if (cursor.moveToFirst()) {
-        val hashedPassword = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD))
-        Log.d("DBHelper", "Input Password: $password") // Log the input password
-        Log.d("DBHelper", "Hashed Password: $hashedPassword")
-        val passwordMatches = BCrypt.checkpw(password, hashedPassword)
-        Log.d("DBHelper", "Password Matches: $passwordMatches") // Log if the password matches
-        if (passwordMatches) {
-            val user = User(
-                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),
-                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
-                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
-                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STUDENT_ID)),
-                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)),
-                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)),
-                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_ADMIN)) == 1
-            )
-            cursor.close()
-            Log.d("DBHelper", "User Authenticated: $user") // Log the authenticated user
-            return user
-        } else {
-            Log.d("DBHelper", "Password check failed")
-        }
-    } else {
-        Log.d("DBHelper", "No user found with email: $email")
-    }
-    cursor.close()
-    return null
-}
 
-*/
     //the validate function without hashing for now..
     fun validateUser(email: String, password: String): User? {
         val db = readableDatabase
@@ -137,6 +121,19 @@ fun validateUser(email: String, password: String): User? {
         return null
     }
 
+    // insertTicket function
+    fun insertTicket(queryID: Int, userID: Int, adminID: Int, message: String) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_QUERY_ID, queryID)
+            put(COLUMN_USER_ID, userID)
+            put(COLUMN_ADMIN_ID, adminID)
+            put(COLUMN_MESSAGE, message)
+            put(COLUMN_STATUS, "Open") // Default status is Open
+        }
+        db.insert(TABLE_TICKETS, null, values)
+        db.close()
+    }
 
 
 
@@ -174,3 +171,38 @@ fun getAllUsers(): List<User> {
     return userList
 }
 }
+// /*the hashed passwords are correct but it still says invalid login credentials so i have to skip password hashing for now, could not find the issue*/
+/*
+fun validateUser(email: String, password: String): User? {
+    val db = readableDatabase
+    val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_EMAIL = ?", arrayOf(email))
+    if (cursor.moveToFirst()) {
+        val hashedPassword = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD))
+        Log.d("DBHelper", "Input Password: $password") // Log the input password
+        Log.d("DBHelper", "Hashed Password: $hashedPassword")
+        val passwordMatches = BCrypt.checkpw(password, hashedPassword)
+        Log.d("DBHelper", "Password Matches: $passwordMatches") // Log if the password matches
+        if (passwordMatches) {
+            val user = User(
+                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STUDENT_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)),
+                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_ADMIN)) == 1
+            )
+            cursor.close()
+            Log.d("DBHelper", "User Authenticated: $user") // Log the authenticated user
+            return user
+        } else {
+            Log.d("DBHelper", "Password check failed")
+        }
+    } else {
+        Log.d("DBHelper", "No user found with email: $email")
+    }
+    cursor.close()
+    return null
+}
+
+*/
